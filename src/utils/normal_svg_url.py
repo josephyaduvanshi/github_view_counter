@@ -1,4 +1,6 @@
 from urllib.parse import urlencode
+
+from src.constants.constants import Constants
 from src.utils.random_colors import random_color_gen
 
 
@@ -21,4 +23,4 @@ def get_normal_svg_url(message,
         "logoColor": "white" if logo_color is None else logo_color,
         "style": "for-the-badge" if style is None else style
     }
-    return "https://img.shields.io/static/v1?" + urlencode(params)
+    return Constants.base_url_svg + urlencode(params)

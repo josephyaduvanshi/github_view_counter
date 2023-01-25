@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 
-from src.constants.constants import custom_icon
+from src.constants.constants import Constants
 from src.controller.view_controller import ViewsCounter
 from src.helpers.validators.has_label_checker import has_label_check
 from src.utils.random_colors import random_color_gen
@@ -16,7 +16,6 @@ def get_svg_url(
 
     :return: the SVG image URL
     """
-    print(has_label_check(has_label, label))
     _random_color = random_color_gen()
     params = {
         "label": has_label_check(has_label, label),
@@ -24,11 +23,11 @@ def get_svg_url(
         "labelColor": _random_color if label_color is None else label_color,
         "color": _random_color if color is None else color,
         "logoWidth": 28 if logo_width is None else logo_width,
-        "logo": custom_icon if logo is None else logo,
+        "logo": Constants.custom_icon if logo is None else logo,
         "logoColor": "white" if logo_color is None else logo_color,
         "style": "for-the-badge" if style is None else style,
         "cacheSeconds": 0,
         "maxAge": 0,
         "cache_buster": cache_buster
     }
-    return "https://img.shields.io/static/v1?" + urlencode(params)
+    return Constants.base_url_svg + urlencode(params)

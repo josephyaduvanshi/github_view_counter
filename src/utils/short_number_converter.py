@@ -3,7 +3,7 @@ def short_number(n) -> str:
     Reduce a significant number by utilizing the SI prefixes (k, M, B, T).
 
     :param n: the number to shorten
-    :return: the shortened number
+    :return: the shortened number in String literal
     """
     if n < 1000:
         return str(n)

@@ -12,12 +12,12 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 # app.config['CACHE_TYPE'] = 'null'
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
     return "Hello World!, UI is under development"
 
 
-@app.route("/views-counts")
+@app.route("/views-counts", methods=["GET"])
 def views():
     """
     View function for root route management. Increase the number of views, generate the URL for the SVG picture,
@@ -31,13 +31,13 @@ In JSOn FORMAt:  {"label":"","message":"","labelColor":"","backgroundColor":"", 
     return view_url(arguments)
 
 
-@app.route("/generate-card")
+@app.route("/generate-card", methods=["GET"])
 def generate_card():
     arguments = jsonify(request.args).json
     return normal_card_gen(arguments=arguments)
 
 
-@app.route("/admin/view-all-users")
+@app.route("/admin/view-all-users", methods=["GET"])
 def view_all_users():
     """
     Views all the users in the database.
